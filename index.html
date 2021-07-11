@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Save Web Form Data to Spreadsheets - Contact Form</title>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+        <script>
+            function SubForm (){
+                $.ajax({
+                    url:'https://api.apispreadsheets.com/data/15286/',
+                    type:'post',
+                    data:$("#myForm").serializeArray(),
+                    success: function(){
+                    alert("Form Data Submitted :)")
+                    },
+                    error: function(){
+                    alert("There was an error :(")
+                    }
+                });
+            }
+        </script>
+
+        <style>
+            .form_container{
+                width:200px;
+                margin: 50px 200px;
+                background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 69%);
+                padding: 50px;
+                box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+                height: 300;
+                border-radius: 20px;
+            }
+            .form_button{
+                background-color: #0E3386; 
+                height: 40px;
+                width: 100px;
+                border: 3px solid white;
+                border-radius: 50px;
+                color: #fff ;
+                box-shadow: 5px 5px 7px rgba(0,0,0,.7);
+                
+            }
+            .form_input{
+                padding: 10px;
+                height: 20px;
+                width: 100%;
+                border-radius: 10px;
+            }
+            .form_label{
+                background-color:#0E3386;
+                color: white;
+                font-size: 18px;
+                padding: 8px;
+                margin-bottom: 30px;
+                border-radius: 9px;
+            }
+            .button_container{
+                display: flex;
+                flex-direction: row-reverse;
+            }
+            .side_button{
+                border-radius: 50%;
+                background: rgb(0,185,255);
+                background: radial-gradient(circle, rgba(0,185,255,1) 0%, rgba(255,1,1,1) 0%, rgba(0,212,255,1) 56%);
+                padding: 30px;
+                box-shadow: 5px 5px 15px black;
+                border: 4px solid darkblue;
+                color:white;
+                text-shadow: 3px 3px 4px black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="form_container">
+            <form id="myForm" class="form_main">
+                <label class="form_label">First Name</label>
+                <br> <br> <br>
+                <input class="form_input" name="First_Name" />
+                <br> <br> <br>
+                <label class="form_label">Last Name</label>
+                <br> <br>  <br>
+                <input class="form_input" name="Last_Name" />
+                <br> <br> <br>
+                <label class="form_label">Email</label>
+                <br> <br> <br>
+                <input class="form_input"name="E-Mail" />
+                <br> <br> 
+            </form>
+            <div class="button_container">
+                <button onclick="SubForm()" class="form_button"> <b>Subscribe</b></button>
+            </div>
+        </div>
+         
+        <button class="side_button">
+            <b>Subscribe <br> to our mail</b>
+        </button>
+        
+    </body>
+</html>
